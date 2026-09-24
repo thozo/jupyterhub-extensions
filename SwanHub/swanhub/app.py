@@ -45,7 +45,7 @@ class SWAN(app.JupyterHub):
                     "access:servers!user",
                     "read:users:activity!user",
                     "users:activity!user",
-                    "admin:auth_state!user",
+                    'admin:auth_state!user',
                 ],
             },
         ]
