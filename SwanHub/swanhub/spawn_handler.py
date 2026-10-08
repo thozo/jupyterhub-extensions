@@ -306,7 +306,9 @@ class SpawnHandler(JHSpawnHandler):
                 # (in a new scope so we only upload it once and not for every error after this)
                 if spawn_failure_logs := user.spawner.spawn_failure_logs:
                     scope.add_attachment(
-                        bytes=spawn_failure_logs.encode(), filename="notebook.log", content_type="text/plain"
+                        bytes=spawn_failure_logs.encode(),
+                        filename=f"{user.spawner.pod_name}-notebook.log",
+                        content_type="text/plain",
                     )
 
                 # Report spawn exception to Sentry. The user and spawn options
