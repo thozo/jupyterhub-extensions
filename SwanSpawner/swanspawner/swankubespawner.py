@@ -69,7 +69,7 @@ class SwanKubeSpawner(define_SwanSpawner_from(KubeSpawner)):
             self.log.error("Error while spawning the user container: %s", e, exc_info=True)
             raise e
 
-    async def _get_pod_events_and_logs(self, tail_lines=1000):
+    async def _get_pod_events_and_logs(self, *, tail_lines=1000):
         """Retrieve pod events and logs for the notebook container"""
         events = "\n".join(f"{e['lastTimestamp'] or e['eventTime']} {e['reason']}: {e['message']}" for e in self.events)
         try:
