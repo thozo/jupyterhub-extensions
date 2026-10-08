@@ -76,7 +76,11 @@ class SwanKubeSpawner(define_SwanSpawner_from(KubeSpawner)):
             # use a timeout as this must not prevent actually stopping the pod
             logs = await asyncio.wait_for(
                 self.api.read_namespaced_pod_log(
-                    self.pod_name, self.swan_container_namespace, container="notebook", tail_lines=tail_lines
+                    self.pod_name,
+                    self.swan_container_namespace,
+                    container="notebook",
+                    tail_lines=tail_lines,
+                    timestamps=True,
                 ),
                 self.k8s_api_request_timeout,
             )
